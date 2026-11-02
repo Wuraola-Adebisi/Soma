@@ -112,7 +112,6 @@ function Home() {
               <a className="site-cta" href="/app#shared">Start a shared space <ArrowRight size={17} /></a>
               <a className="hm-link" href="#how-it-works">See how it works</a>
             </div>
-            <p className="hm-fine">No sign-up. Your data stays in this browser.</p>
           </div>
           <SplitDemo />
         </div>
@@ -167,8 +166,6 @@ function Home() {
         <div className="hm-wrap hm-faq-wrap">
           <h2 className="hm-h2">Questions people ask first</h2>
           <div className="hm-faq">
-            <details><summary>Do the people I split with need an account?</summary><p>There are no accounts yet. Spaces live in your browser on this device, so adding someone saves their name and email as a label. It does not invite them or give them access.</p></details>
-            <details><summary>Where is my data stored?</summary><p>In this browser, on this device. Clearing site data deletes it, so export a report now and then.</p></details>
             <details><summary>Can I use my own currency?</summary><p>Yes. Pick a currency in the planner or when you create a shared space. Soma does not convert between currencies.</p></details>
             <details><summary>Does Soma connect to my bank or move money?</summary><p>No. It records who paid and who owes. When someone settles up, you log it in Soma and the payment itself happens elsewhere.</p></details>
           </div>
