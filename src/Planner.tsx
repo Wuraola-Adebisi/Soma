@@ -773,7 +773,7 @@ function Dashboard() {
             <div>
               <div style={{ fontSize: 13, fontWeight: 700 }}>Money workspace</div>
               <div style={{ fontSize: 12, color: 'var(--muted)', marginTop: 3 }}>
-                Personal data stays on this device
+                Saved on this device
               </div>
             </div>
           </div>
@@ -854,7 +854,7 @@ function Dashboard() {
                           ', ' +
                           cycle.daysLeft +
                           (cycle.daysLeft === 1 ? ' day away.' : ' days away.')
-                        : 'Add your income in Salary planner to see a daily number.'}
+                        : 'Set up your salary plan to see your daily spending amount.'}
                     </p>
                   </div>
                   <div className="cycle-side">
@@ -1072,7 +1072,7 @@ function Dashboard() {
                           })}
                         {!data.transactions.length && (
                           <div className="empty">
-                            No transactions yet. Add income or an expense to start tracking your money.
+                            No transactions recorded.
                           </div>
                         )}
                       </div>
@@ -1355,7 +1355,7 @@ function Dashboard() {
               {modal === 'transaction'
                 ? 'Record money coming in or going out. Your overview updates automatically.'
                 : modal === 'bill'
-                  ? 'Add a payment to keep its due date and amount in view.'
+                  ? 'Record a bill or payment.'
                   : 'Give a goal a target and a date to work towards.'}
             </p>
             {modal === 'transaction' && (
@@ -1516,8 +1516,7 @@ function Dashboard() {
             </div>
             <h3 className="modal-subhead">Your data</h3>
             <p className="helper">
-              Everything is saved in this browser on this device. Download a backup before you clear browser
-              data or switch devices.
+              Download a backup before clearing browser data or switching devices.
             </p>
             <div className="modal-actions">
               <button type="button" className="secondary" onClick={downloadBackup}>
@@ -1756,7 +1755,7 @@ function Setup({
     <section className="panel setup" aria-labelledby={id + 'h'}>
       <h2 id={id + 'h'}>Set up your plan</h2>
       <p className="helper">
-        Four details give you a daily spending number. You can change any of them later.
+        Set your income, spending limit and period.
       </p>
       <form
         noValidate
@@ -2195,7 +2194,7 @@ function Bills({
             </table>
             {!bills.length && (
               <div className="empty">
-                No bills added yet. Add a bill to keep its due date and payment status in view.
+                No bills recorded.
               </div>
             )}
           </div>
@@ -2406,7 +2405,7 @@ function Goals({
             );
           })}
           {!data.goals.length && (
-            <div className="empty">No savings goals yet. Set a target to start tracking your progress.</div>
+            <div className="empty">No savings goals recorded.</div>
           )}
         </div>
       </section>
