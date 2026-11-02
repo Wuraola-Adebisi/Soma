@@ -1969,7 +1969,7 @@ function Planner({
         <div className="divider" />
         <Head
           title="Give it a purpose"
-          subtitle="Adjust your allocations. Zero is fine if a category does not apply."
+          subtitle="Enter an amount for each category. Leave any category you do not use at zero."
         />
         {categories.map((c) => (
           <div className="allocation" key={c}>
