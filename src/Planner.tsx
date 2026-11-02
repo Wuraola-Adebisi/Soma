@@ -1918,14 +1918,18 @@ function Planner({
   const [income, setIncome] = useState(String(data.plan.income));
   const [frequency, setFrequency] = useState<Frequency>(data.plan.frequency);
   const [nextPayday, setNextPayday] = useState(data.plan.nextPayday);
-  const [allocations, setAllocations] = useState({ ...data.plan.allocations });
+  const [allocations, setAllocations] = useState<Record<string, string>>(
+    Object.fromEntries(Object.entries(data.plan.allocations).map(([key, value]) => [key, String(value ?? '')])),
+  );
   useEffect(() => {
     setIncome(String(data.plan.income));
     setFrequency(data.plan.frequency);
     setNextPayday(data.plan.nextPayday);
-    setAllocations({ ...data.plan.allocations });
+    setAllocations(
+      Object.fromEntries(Object.entries(data.plan.allocations).map(([key, value]) => [key, String(value ?? '')])),
+    );
   }, [data.plan]);
-  const total = Object.values(allocations).reduce((s, n) => s + Number(n || 0), 0);
+  const total = Object.values(allocations).reduce((s, n) => s + (Number(n) || 0), 0);
   const inc = Number(income) || 0;
   const save = () => {
     if (inc <= 0) {
@@ -1965,7 +1969,7 @@ function Planner({
         <div className="divider" />
         <Head
           title="Give it a purpose"
-          subtitle="Adjust your allocations. Zero is fine if a category does not apply."
+          subtitle="Enter an amount for each category. Leave any category you do not use at zero."
         />
         {categories.map((c) => (
           <div className="allocation" key={c}>
@@ -1984,8 +1988,9 @@ function Planner({
               aria-label={c + ' allocation'}
               type="number"
               min="0"
-              value={allocations[c] ?? 0}
-              onChange={(e) => setAllocations((a) => ({ ...a, [c]: Number(e.target.value) }))}
+              step="any"
+              value={allocations[c] ?? ''}
+              onChange={(e) => setAllocations((a) => ({ ...a, [c]: e.target.value }))}
             />
           </div>
         ))}
