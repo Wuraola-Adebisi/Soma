@@ -81,9 +81,11 @@ function SplitDemo() {
 function Home() {
   return <>
     <section className="hm-hero"><div className="hm-wrap hm-hero-grid"><div className="hm-hero-copy">
-      <h1>A practical money-planning tool <span>for everyday life.</span></h1>
-      <p className="hm-hero-description">Plan your spending, keep bills and savings goals in view, and stay on top of the costs you share with others.</p>
-      <div className="hm-actions"><a className="site-cta" href="/app">Explore Soma <ArrowRight size={17} /></a></div>
+      <p className="hm-eyebrow">Personal money. Shared responsibilities.</p>
+      <h1>Money is easier to manage when <span>everything has its place.</span></h1>
+      <p className="hm-lead">Plan your own spending, keep bills and savings goals in view, and organise the costs you share with other people. Soma brings the moving parts together without mixing your personal money with shared expenses.</p>
+      <div className="hm-actions"><a className="site-cta" href="/app">Explore Soma <ArrowRight size={17} /></a><a className="hm-link" href="#product">See the product</a></div>
+      <p className="hm-hero-note">A practical money-planning tool for everyday life.</p>
     </div><SplitDemo /></div></section>
 
     <section className="hm-section" id="how-it-works"><div className="hm-wrap">
