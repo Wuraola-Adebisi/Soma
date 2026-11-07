@@ -83,6 +83,7 @@ function Home() {
     <section className="hm-hero"><div className="hm-wrap hm-hero-grid"><div className="hm-hero-copy">
       <h1>A practical money-planning tool <span>for everyday life.</span></h1>
       <p className="hm-lead hm-hero-support">Personal money. Shared responsibilities.</p>
+      <p className="hm-hero-description">Plan your spending, keep bills and savings goals in view, and stay on top of the costs you share with others.</p>
       <div className="hm-actions"><a className="site-cta" href="/app">Explore Soma <ArrowRight size={17} /></a><a className="hm-link" href="#product">See the product</a></div>
     </div><SplitDemo /></div></section>
 
