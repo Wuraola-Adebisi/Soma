@@ -24,7 +24,7 @@ function Footer() {
   return <footer className="site-footer">
     <div className="site-footer-main">
       <div className="footer-brand-col"><Brand /><p>Make sense of your money. Keep shared costs clear.</p></div>
-      <div className="footer-col"><h4>Explore</h4><a href="/#how-it-works">How it works</a><a href="/#product">The product</a><a href="/about">About Soma</a><a href="/app">Open Soma</a></div>
+      <div className="footer-col"><h4>Explore</h4><a href="/#how-it-works">How it works</a><a href="/about">About Soma</a><a href="/app">Open Soma</a></div>
       <div className="footer-col"><h4>Information</h4><a href="/terms">Terms of Service</a><a href="/privacy">Privacy Policy</a><a href="/legal">Legal information</a></div>
     </div>
     <div className="site-footer-bottom"><span>© {new Date().getFullYear()} Soma. All rights reserved.</span><span>A money-planning tool, not a bank or financial adviser.</span></div>
@@ -34,7 +34,7 @@ function Header() {
   const [menu, setMenu] = useState(false);
   return <header className="site-header"><div className="site-header-inner"><Brand />
     <nav className={menu ? 'site-nav is-open' : 'site-nav'} aria-label="Main navigation">
-      <a href="/#how-it-works" onClick={() => setMenu(false)}>How it works</a><a href="/#product" onClick={() => setMenu(false)}>The product</a><a href="/about" onClick={() => setMenu(false)}>About</a><a href="/contact" onClick={() => setMenu(false)}>Contact</a><a className="site-login" href="/app">Open Soma <ArrowRight size={15} /></a>
+      <a href="/#how-it-works" onClick={() => setMenu(false)}>How it works</a><a href="/about" onClick={() => setMenu(false)}>About Soma</a><a href="/contact" onClick={() => setMenu(false)}>Contact</a><a className="site-login" href="/app">Open Soma <ArrowRight size={15} /></a>
     </nav>
     <div className="header-actions"><a className="header-login" href="/app">Open Soma <ArrowRight size={15} /></a><button className="site-menu-btn" aria-label={menu ? 'Close menu' : 'Open menu'} aria-expanded={menu} onClick={() => setMenu(!menu)}>{menu ? <X size={21} /> : <Menu size={21} />}</button></div>
   </div></header>;
