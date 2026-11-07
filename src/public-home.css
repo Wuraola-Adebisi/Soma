@@ -215,3 +215,22 @@
  .about-founder .founder-links{gap:6px}
  .founder-links a{padding:7px 9px;font-size:12px}
 }
+
+
+/* Homepage hero typography follows Soma's product illustration palette and type system. */
+.hm-hero-support{
+  max-width:34ch;
+  margin:0 0 var(--space-6);
+  color:#302942;
+  font-family:var(--font-body);
+  font-size:clamp(19px,2vw,23px);
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:-.025em;
+}
+.hm-hero-copy h1{
+  color:#302942;
+}
+.hm-hero-copy h1 span{
+  color:#6046D8;
+}
