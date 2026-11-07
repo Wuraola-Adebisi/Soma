@@ -97,7 +97,7 @@ function Home() {
       </div>
     </div></section>
 
-    <section className="hm-product-section" id="product"><div className="hm-wrap"><div className="hm-product-heading"><div><p className="hm-eyebrow">A look inside Soma</p><h2 className="hm-h2">One place for your money and the costs you share.</h2></div><p>Two connected parts of everyday money management, kept distinct so each stays easy to understand.</p></div>
+    <section className="hm-product-section" id="product"><div className="hm-wrap"><div className="hm-product-heading"><div><p className="hm-eyebrow">A look inside Soma</p><h2 className="hm-h2">One place for your money and the costs you share.</h2></div><p>A closer look at the product experience. Figures shown in these visual examples are illustrative.</p></div>
       <div className="hm-screenshot-grid">{productShots.map((shot, i) => <figure className="hm-shot" key={shot.src}><div className="hm-shot-image"><img src={shot.src} alt={shot.alt} loading="lazy" /></div><figcaption><span>0{i + 1}</span><div><h3>{shot.title}</h3><p>{shot.text}</p></div></figcaption></figure>)}</div>
     </div></section>
     <section className="hm-section hm-dark"><div className="hm-wrap"><p className="hm-eyebrow">Designed for everyday decisions</p><h2 className="hm-h2">Less mental arithmetic. More clarity.</h2><p className="hm-sub">A money plan should help you understand where things stand, not make managing money feel like another job.</p><div className="hm-features">
