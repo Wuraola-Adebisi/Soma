@@ -1,6 +1,17 @@
 {
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "trackwithsoma.com"
+        }
+      ],
+      "destination": "https://www.trackwithsoma.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/ai",
       "destination": "/",
       "permanent": true
