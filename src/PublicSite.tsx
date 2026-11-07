@@ -14,7 +14,6 @@ const pages: Record<Exclude<PublicPage, 'home'>, { title: string; intro: string 
 const productShots = [
   { src: '/soma-overview.svg', alt: 'Illustrated view of the Soma personal money dashboard', title: 'Your money, in one view', text: 'See your recorded balance, monthly spending, budget progress and recent activity together.' },
   { src: '/soma-shared-expenses.svg', alt: 'Illustrated view of a Soma shared-expense space with balances and group costs', title: 'Shared costs, made clearer', text: 'Keep a record of who paid, each person’s share and the balances still to settle.' }
-]
 ];
 
 function Brand() {
