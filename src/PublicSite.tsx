@@ -82,7 +82,7 @@ function Home() {
   return <>
     <section className="hm-hero"><div className="hm-wrap hm-hero-grid"><div className="hm-hero-copy">
       <h1>Money is easier to manage when <span>everything has its place.</span></h1>
-      <p className="hm-lead">Plan your own spending, keep bills and savings goals in view, and organise the costs you share with other people. Soma brings the moving parts together without mixing your personal money with shared expenses.</p>
+      <p className="hm-lead">Manage your spending, bills, savings goals and shared expenses in one place.</p>
       <div className="hm-actions"><a className="site-cta" href="/app">Explore Soma <ArrowRight size={17} /></a></div>
     </div><SplitDemo /></div></section>
 
