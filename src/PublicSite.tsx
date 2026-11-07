@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { ArrowRight, Menu, Wallet, X, Linkedin, Github, Mail } from 'lucide-react';
+import { ArrowRight, Menu, Wallet, X, Linkedin, Mail } from 'lucide-react';
 import './public-home.css';
 
 type PublicPage = 'home' | 'about' | 'contact' | 'terms' | 'privacy' | 'legal';
 const pages: Record<Exclude<PublicPage, 'home'>, { title: string; intro: string }> = {
-  about: { title: 'Money is personal. Your plan should be too.', intro: 'Soma is being built to make everyday money decisions easier to organise, whether you are planning on your own or keeping track of costs you share with other people.' },
+  about: { title: 'A clearer way to manage money, together and on your own.', intro: 'Soma brings personal money planning and shared-expense tracking into one thoughtful, practical tool.' },
   contact: { title: 'Tell us what would make Soma better.', intro: 'Questions, feedback or a problem with Soma? Send a message. Product feedback is welcome.' },
   terms: { title: 'Terms of Service', intro: 'The terms that apply when you use Soma’s personal and shared money-planning tools.' },
   privacy: { title: 'Privacy Policy', intro: 'A clear explanation of the information you enter into Soma and how it is handled.' },
@@ -12,12 +12,9 @@ const pages: Record<Exclude<PublicPage, 'home'>, { title: string; intro: string 
 };
 
 const productShots = [
-  { src: '/Overview.png', alt: 'Soma personal money overview showing a summary of the user’s finances', title: 'A clearer view of your money', text: 'See your money at a glance, with the figures and activity you have recorded.' },
-  { src: '/Expenses Dashboard.png', alt: 'Soma expenses dashboard with spending categories and summaries', title: 'Understand your spending', text: 'Review spending patterns and keep everyday expenses organised.' },
-  { src: '/Expenses Tracker.png', alt: 'Soma expense tracker showing recorded transactions', title: 'Keep track of the details', text: 'Record income and expenses so your plan reflects what is actually happening.' },
-  { src: '/Bills and Calendar.png', alt: 'Soma bills and calendar view showing upcoming due dates', title: 'Keep upcoming bills in view', text: 'Bring bills, due dates and payment status into one place.' },
-  { src: '/Salary Plan.png', alt: 'Soma salary planning view', title: 'Give your income a plan', text: 'Plan how your income should be allocated across your priorities.' },
-  { src: '/Insights.png', alt: 'Soma money insights and summaries screen', title: 'Review your progress', text: 'Use your recorded information to reflect on your spending and plans.' }
+  { src: '/soma-overview.svg', alt: 'Illustrated view of the Soma personal money dashboard', title: 'Your money, in one view', text: 'See your recorded balance, monthly spending, budget progress and recent activity together.' },
+  { src: '/soma-shared-expenses.svg', alt: 'Illustrated view of a Soma shared-expense space with balances and group costs', title: 'Shared costs, made clearer', text: 'Keep a record of who paid, each person’s share and the balances still to settle.' }
+]
 ];
 
 function Brand() {
@@ -27,15 +24,13 @@ function Brand() {
 function Footer() {
   return <footer className="site-footer">
     <div className="site-footer-main">
-      <div className="footer-brand-col"><Brand /><p>Make sense of your money. Keep shared costs clear.</p><a className="footer-email" href="mailto:hello@trackwithsoma.com"><Mail size={15} /> hello@trackwithsoma.com</a></div>
+      <div className="footer-brand-col"><Brand /><p>Make sense of your money. Keep shared costs clear.</p></div>
       <div className="footer-col"><h4>Explore</h4><a href="/#how-it-works">How it works</a><a href="/#product">The product</a><a href="/about">About Soma</a><a href="/app">Open Soma</a></div>
-      <div className="footer-col"><h4>Get in touch</h4><a href="/contact">Contact</a><a href="https://www.linkedin.com/in/wuraola-adebisi/" target="_blank" rel="noreferrer">LinkedIn</a><a href="https://github.com/Wuraola-Adebisi" target="_blank" rel="noreferrer">GitHub</a></div>
       <div className="footer-col"><h4>Information</h4><a href="/terms">Terms of Service</a><a href="/privacy">Privacy Policy</a><a href="/legal">Legal information</a></div>
     </div>
     <div className="site-footer-bottom"><span>© {new Date().getFullYear()} Soma. All rights reserved.</span><span>A money-planning tool, not a bank or financial adviser.</span></div>
   </footer>;
 }
-
 function Header() {
   const [menu, setMenu] = useState(false);
   return <header className="site-header"><div className="site-header-inner"><Brand />
@@ -102,15 +97,13 @@ function Home() {
       </div>
     </div></section>
 
-    <section className="hm-product-section" id="product"><div className="hm-wrap"><div className="hm-product-heading"><div><p className="hm-eyebrow">A look inside Soma</p><h2 className="hm-h2">Built around the details that make up real life.</h2></div><p>Explore the working product: from everyday transactions and monthly plans to bills, income and progress.</p></div>
-      <div className="hm-screenshot-grid">{productShots.map((shot, i) => <figure className={'hm-shot hm-shot-' + i} key={shot.src}><div className="hm-shot-image"><img src={shot.src} alt={shot.alt} loading={i < 2 ? 'eager' : 'lazy'} /></div><figcaption><span>0{i + 1}</span><div><h3>{shot.title}</h3><p>{shot.text}</p></div></figcaption></figure>)}</div>
+    <section className="hm-product-section" id="product"><div className="hm-wrap"><div className="hm-product-heading"><div><p className="hm-eyebrow">A look inside Soma</p><h2 className="hm-h2">One place for your money and the costs you share.</h2></div><p>Two connected parts of everyday money management, kept distinct so each stays easy to understand.</p></div>
+      <div className="hm-screenshot-grid">{productShots.map((shot, i) => <figure className="hm-shot" key={shot.src}><div className="hm-shot-image"><img src={shot.src} alt={shot.alt} loading="lazy" /></div><figcaption><span>0{i + 1}</span><div><h3>{shot.title}</h3><p>{shot.text}</p></div></figcaption></figure>)}</div>
     </div></section>
-
     <section className="hm-section hm-dark"><div className="hm-wrap"><p className="hm-eyebrow">Designed for everyday decisions</p><h2 className="hm-h2">Less mental arithmetic. More clarity.</h2><p className="hm-sub">A money plan should help you understand where things stand, not make managing money feel like another job.</p><div className="hm-features">
       <div><h3>Know what is going out</h3><p>Keep income, expenses and recurring bills in one organised view.</p></div><div><h3>See the shared picture</h3><p>Understand who covered a cost and what each person’s share comes to.</p></div><div><h3>Keep goals visible</h3><p>Give savings goals and spending priorities a place in your plan.</p></div><div><h3>Take your records with you</h3><p>Create clear reports you can print or save for your own reference.</p></div>
     </div></div></section>
 
-    <section className="hm-section hm-stage"><div className="hm-wrap hm-stage-grid"><div><p className="hm-eyebrow">Where Soma is today</p><h2 className="hm-h2">A working product, built one useful step at a time.</h2></div><div><p>Soma is an early-stage software product currently being built and developed by its founder. The working version brings personal money planning and shared-expense tracking into one place. The focus is on making the core experience useful, clear and dependable before expanding what it can do.</p><p>As Soma grows, the product roadmap includes making it easier for people to manage shared spaces together and access their information across devices.</p><a className="hm-text-link" href="/about">Meet the founder <ArrowRight size={16}/></a></div></div></section>
 
     <section className="hm-section" id="faq"><div className="hm-wrap hm-faq-wrap"><div><p className="hm-eyebrow">Good to know</p><h2 className="hm-h2">A few things people ask.</h2></div><div className="hm-faq">
       <details><summary>Does Soma connect to my bank?</summary><p>No. You enter the income, expenses and bills you want to keep track of. Soma does not connect to bank accounts or import transactions.</p></details>
@@ -125,14 +118,24 @@ function Home() {
 }
 
 function Founder() {
-  return <section className="founder-section"><div className="founder-photo-wrap"><img src="/Wuraola's%20Image.jpg" alt="Wuraola Eunice Adebisi, founder and developer of Soma" /></div><div className="founder-copy"><p className="hm-eyebrow">The person building Soma</p><h2>Wuraola Eunice Adebisi</h2><p className="founder-role">Founder &amp; Product Developer</p><p>I’m building Soma to make the everyday work of managing money feel more organised and less fragmented. I lead the product direction and build the experience, from the way the tools work to the details of the interface.</p><p>Soma is currently an independent, founder-built product. I’m developing its core features around the real routines people have with their own money and the costs they share.</p><div className="founder-links"><a href="https://www.linkedin.com/in/wuraola-adebisi/" target="_blank" rel="noreferrer"><Linkedin size={17}/> LinkedIn</a><a href="https://github.com/Wuraola-Adebisi" target="_blank" rel="noreferrer"><Github size={17}/> GitHub</a><a href="mailto:hello@trackwithsoma.com"><Mail size={17}/> Email</a></div></div></section>;
+  return <section className="about-founder" aria-labelledby="about-founder-title">
+    <div className="about-founder-photo"><img src="/Wuraola's%20Image.jpg" alt="Wuraola Eunice Adebisi" /></div>
+    <div className="about-founder-copy"><p className="hm-eyebrow">A note from the founder</p><h2 id="about-founder-title">Wuraola Eunice Adebisi</h2><p className="about-founder-role">Founder and Product Developer</p><p>I’m building Soma independently, with a focus on making personal money planning and shared expenses simpler to keep up with.</p><div className="founder-links"><a href="https://www.linkedin.com/in/wuraola-adebisi/" target="_blank" rel="noreferrer"><Linkedin size={17}/> LinkedIn</a><a href="mailto:hello@trackwithsoma.com"><Mail size={17}/> Get in touch</a></div></div>
+  </section>;
 }
-
 function InfoPage({ page }: { page: Exclude<PublicPage, 'home'> }) {
   const [sent, setSent] = useState(false);
   const info = pages[page];
   return <main className="info-page"><div className="info-page-top"><a href="/">Home</a><span>/</span><span>{info.title}</span></div><div className="info-hero"><h1>{info.title}</h1><p>{info.intro}</p></div>
-    {page === 'about' && <><div className="info-content about-content"><h2>Why Soma exists</h2><p>Money is rarely managed in just one way. You might have a personal budget to keep on top of, while also sharing rent, groceries, subscriptions or travel costs with other people. Those two sides of life are connected, but they are not the same. Soma gives each one its own space.</p><p>With the personal planner, you can record income and spending, organise bills, set budgets and track savings goals. With shared spaces, you can record group expenses, see each person’s balance, review suggested settlements and keep a history of what has been settled.</p><h2>Product and business direction</h2><p>Soma is a digital software product delivered through the web, designed for individuals and households who want to organise personal finances and shared costs. The working product brings personal money planning and shared-expense tracking into one application. Its commercial model is still being evaluated; no paid plan is currently offered.</p><p>The current product is a working early version focused on the core planning and expense-tracking experience. The longer-term direction is to make shared money management more collaborative, with individual access and a consistent experience across devices. Those capabilities are part of the roadmap, not features currently available.</p><h2>What guides the product</h2><ul><li><strong>Clarity without judgement.</strong> Money information should help people make sense of their situation, not shame them.</li><li><strong>Useful over complicated.</strong> The tools should make everyday decisions easier to organise.</li><li><strong>Personal and shared are different.</strong> Your own financial plan should not disappear into group expenses.</li><li><strong>Build with care.</strong> New capabilities should solve real problems and be clear about what they do.</li></ul><a className="site-cta" href="/app">Explore Soma <ArrowRight size={16}/></a></div><Founder /></>}
+    {page === 'about' && <div className="about-page-content">
+      <section className="about-story"><p className="hm-eyebrow">The idea behind Soma</p><h2>Personal finances and shared expenses belong in the same picture, but they need their own space.</h2><p>Most people are managing more than one kind of money responsibility. There is the money coming in, the everyday spending, bills and savings goals. Then there are the costs shared with a partner, a household, friends or a group. Keeping track of both can quickly become scattered across notes, chats and spreadsheets.</p><p>Soma brings those routines together in one money-planning tool, while keeping personal plans separate from group expenses.</p></section>
+      <section className="about-product-grid">
+        <article><span>01 / YOUR MONEY</span><h2>Plan for yourself.</h2><p>Record income and spending, organise expenses into categories, set monthly budgets, keep bill dates in view and track progress towards savings goals.</p></article>
+        <article><span>02 / SHARED COSTS</span><h2>Keep group expenses clear.</h2><p>Create separate spaces for the people or activities you share costs with. Record who paid, split expenses, review balances, and log settlements as they happen.</p></article>
+      </section>
+      <section className="about-direction"><h2>Where Soma is today</h2><p>Soma is a working early-stage product, independently built and developed. The current version focuses on the core experience: personal money planning and a shared-expense ledger. The next stage of the product is focused on making shared spaces more collaborative and making it easier to access your information across devices. Those capabilities are being planned; they are not available yet.</p><p>Soma is designed as a digital product for individuals and households. Its commercial model is still being evaluated, and there is no paid plan at present.</p><a className="site-cta" href="/app">Explore Soma <ArrowRight size={16}/></a></section>
+      <Founder />
+    </div>}
     {page === 'contact' && <div className="info-content contact-layout"><div><h2>Tell us what’s on your mind.</h2><p>Use the form to share product feedback, report an issue or suggest something that would make Soma more useful.</p><div className="contact-detail"><span>✳</span><div><strong>Product feedback</strong><small>Ideas, improvements and the details that matter.</small></div></div><div className="contact-detail"><span>↗</span><div><strong>Help with the planner</strong><small>Tell us what you were trying to do and what happened.</small></div></div><p className="contact-direct">Prefer email? <a href="mailto:hello@trackwithsoma.com">hello@trackwithsoma.com</a></p></div>
       <form className="contact-form" id="feedback" onSubmit={e => { e.preventDefault(); const f = new FormData(e.currentTarget); const subject = encodeURIComponent(String(f.get('subject') || 'Soma enquiry')); const body = encodeURIComponent('Name: ' + f.get('name') + '\nEmail: ' + f.get('email') + '\n\n' + f.get('message')); window.location.href = 'mailto:hello@trackwithsoma.com?subject=' + subject + '&body=' + body; setSent(true); }}>
         <label>Your name<input name="name" required autoComplete="name" placeholder="What should we call you?" /></label><label>Email address<input name="email" type="email" required autoComplete="email" placeholder="you@example.com" /></label><label>What is this about?<select name="subject"><option>Product feedback</option><option>Something isn’t working</option><option>General question</option><option>Partnership enquiry</option></select></label><label>Your message<textarea name="message" rows={5} required placeholder="Tell us a little more..." /></label><button className="site-cta" type="submit">{sent ? 'Open your email app again' : 'Prepare your message'} <ArrowRight size={16}/></button><small className="form-note">Your email app will open so you can review and send the message.</small>
@@ -149,7 +152,7 @@ export default function PublicSite() {
   useEffect(() => {
     const metadata: Record<PublicPage, { title: string; description: string }> = {
       home: { title: 'Soma | Personal money and shared expenses, in one place', description: 'Plan your own spending, keep bills and savings goals in view, and organise the costs you share with other people.' },
-      about: { title: 'About Soma | The product and its founder', description: 'Meet the founder and learn why Soma is being built to bring personal money planning and shared-expense tracking together.' },
+      about: { title: 'About Soma | Personal money and shared expenses', description: 'Learn what Soma does, why it exists and how it brings personal money planning and shared-expense tracking together.' },
       contact: { title: 'Contact Soma | Questions and feedback', description: 'Contact Soma with product feedback, questions or help with the money planner.' },
       terms: { title: 'Terms of Service | Soma', description: 'Read the terms for using Soma personal money planning and shared-expense tools.' },
       privacy: { title: 'Privacy Policy | Soma', description: 'Learn what information you enter into Soma and how your planner records are handled.' },
