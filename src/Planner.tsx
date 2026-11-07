@@ -78,7 +78,7 @@ const daysFrom = (n: number) => {
   return iso(d);
 };
 const uid = () => Math.random().toString(36).slice(2, 10);
-const currencyOptions = ['USD', 'EUR', 'GBP', 'NGN', 'GHS', 'KES'];
+const currencyOptions = ['USD', 'EUR', 'GBP', 'NGN', 'GHS', 'KES', 'CAD', 'AUD', 'NZD', 'ZAR', 'INR', 'JPY', 'CNY', 'SGD', 'HKD', 'AED', 'SAR', 'QAR', 'KWD', 'BHD', 'OMR', 'EGP', 'MAD', 'XOF', 'XAF', 'TZS', 'UGX', 'RWF', 'ETB', 'ZMW', 'MWK', 'BWP', 'MUR', 'PKR', 'BDT', 'LKR', 'NPR', 'IDR', 'MYR', 'THB', 'PHP', 'VND', 'KRW', 'TRY', 'ILS', 'PLN', 'CZK', 'HUF', 'RON', 'SEK', 'NOK', 'DKK', 'CHF', 'BRL', 'MXN', 'ARS', 'CLP', 'COP', 'PEN', 'UYU'];
 const regionCurrency: Record<string, string> = {
   US: 'USD',
   GB: 'GBP',
@@ -826,7 +826,7 @@ function Dashboard() {
               </div>
             </div>
           )}
-          {page === 'Shared money' && <SharedMoney />}
+          {page === 'Shared money' && <SharedMoney currency={data.plan.currency} />}
           {page === 'Overview' && (
             <>
               {showSetup ? (
