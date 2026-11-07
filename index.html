@@ -4,61 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="color-scheme" content="light" />
-    <meta name="theme-color" content="#f4b6a8" />
-    <meta name="description" content="Soma helps you manage personal budgets and shared household costs. Split expenses, track who paid, settle balances and keep bills and savings goals in view." />
+    <meta name="theme-color" content="#6246ea" />
+    <meta name="description" content="Soma brings personal money planning and shared-expense tracking together. Organise income, spending, bills, savings goals and the costs you share." />
     <meta name="application-name" content="Soma" />
-    <meta name="author" content="Soma" />
+    <meta name="author" content="Wuraola Eunice Adebisi" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <meta name="googlebot" content="index, follow, max-image-preview:large" />
-    <link rel="canonical" href="https://www.payday.money/" />
+    <link rel="canonical" href="https://www.trackwithsoma.com/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Soma" />
-    <meta property="og:title" content="Soma: split shared costs, plan your own money" />
-    <meta property="og:description" content="Manage shared expenses, split household costs, track balances and keep personal budgets and savings goals organised." />
-    <meta property="og:url" content="https://www.payday.money/" />
-    <meta property="og:image" content="https://www.payday.money/og-image.svg" />
+    <meta property="og:title" content="Soma | Personal money and shared expenses, in one place" />
+    <meta property="og:description" content="Plan your own spending, keep bills and savings goals in view, and organise the costs you share with other people." />
+    <meta property="og:url" content="https://www.trackwithsoma.com/" />
+    <meta property="og:image" content="https://www.trackwithsoma.com/og-image.png.png" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image:type" content="image/svg+xml" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Soma, personal and shared money planning" />
+    <meta property="og:image:alt" content="Soma, personal money planning and shared expense tracking" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Soma: split shared costs, plan your own money" />
-    <meta name="twitter:description" content="Manage shared expenses, split household costs, track balances and keep personal budgets and savings goals organised." />
-    <meta name="twitter:image" content="https://www.payday.money/og-image.svg" />
+    <meta name="twitter:title" content="Soma | Personal money and shared expenses, in one place" />
+    <meta name="twitter:description" content="Plan your own spending, keep bills and savings goals in view, and organise the costs you share with other people." />
+    <meta name="twitter:image" content="https://www.trackwithsoma.com/og-image.png.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>Soma: split shared costs, plan your own money</title>
-    <script>
-      (function () {
-        var pages = {
-          "/": { title: "Soma: split shared costs, plan your own money", description: "Manage shared expenses, split household costs, track balances and keep personal budgets and savings goals organised." },
-          "/about": { title: "About Soma: shared and personal money", description: "Learn how Soma helps households organise shared costs while keeping personal money plans in view." },
-          "/contact": { title: "Contact Soma | Questions and feedback", description: "Get in touch with Soma about product feedback, questions or help with the money planner." },
-          "/terms": { title: "Terms of Service | Soma", description: "Read the terms for using Soma's personal and shared money tools." },
-          "/privacy": { title: "Privacy Policy | Soma", description: "Understand how Soma stores personal planner and local shared-expense records." },
-          "/legal": { title: "Legal Information | Soma", description: "Important information about Soma's personal and shared money tools and their intended use." },
-          "/app": { title: "Money Management | Soma", description: "Track shared household costs, split expenses, review balances and organise personal money plans." }
-        };
-        function updateMetadata() {
-          var path = window.location.pathname.replace(/\/+$/, "") || "/";
-          if (path.indexOf("/app/") === 0) path = "/app";
-          var data = pages[path] || pages["/"];
-          document.title = data.title;
-          var description = document.querySelector('meta[name="description"]');
-          if (description) description.setAttribute("content", data.description);
-          var canonical = document.querySelector('link[rel="canonical"]');
-          if (canonical) canonical.setAttribute("href", "https://www.payday.money" + (path === "/" ? "/" : path));
-          [["og:title", data.title], ["og:description", data.description], ["og:url", "https://www.payday.money" + (path === "/" ? "/" : path)], ["twitter:title", data.title], ["twitter:description", data.description]].forEach(function (entry) {
-            var node = document.querySelector('meta[property="' + entry[0] + '"]') || document.querySelector('meta[name="' + entry[0] + '"]');
-            if (node) node.setAttribute("content", entry[1]);
-          });
-        }
-        updateMetadata();
-        window.addEventListener("popstate", updateMetadata);
-      })();
+    <title>Soma | Personal money and shared expenses, in one place</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.trackwithsoma.com/#organization",
+            "name": "Soma",
+            "url": "https://www.trackwithsoma.com/",
+            "email": "hello@trackwithsoma.com",
+            "founder": { "@id": "https://www.trackwithsoma.com/#founder" },
+            "sameAs": [
+              "https://github.com/Wuraola-Adebisi",
+              "https://www.linkedin.com/in/wuraola-adebisi/"
+            ]
+          },
+          {
+            "@type": "Person",
+            "@id": "https://www.trackwithsoma.com/#founder",
+            "name": "Wuraola Eunice Adebisi",
+            "jobTitle": "Founder and Product Developer",
+            "url": "https://www.linkedin.com/in/wuraola-adebisi/",
+            "image": "https://www.trackwithsoma.com/Wuraola%27s%20Image.jpg",
+            "sameAs": [
+              "https://github.com/Wuraola-Adebisi",
+              "https://www.linkedin.com/in/wuraola-adebisi/"
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "@id": "https://www.trackwithsoma.com/#software",
+            "name": "Soma",
+            "url": "https://www.trackwithsoma.com/",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "Web",
+            "description": "A money-planning application for organising personal income, spending, bills, savings goals and shared expenses.",
+            "creator": { "@id": "https://www.trackwithsoma.com/#founder" }
+          }
+        ]
+      }
     </script>
   </head>
   <body>
