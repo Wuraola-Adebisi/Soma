@@ -10,6 +10,7 @@
 /* hero */
 .hm-hero{background:var(--color-ground);padding:clamp(40px,6vw,88px) 0 clamp(48px,7vw,96px)}
 .hm-hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(32px,5vw,72px);align-items:center}
+.hm-hero-copy{transform:translateY(-38px)}
 .hm-hero-copy h1{font-family:var(--font-display);font-size:var(--text-h1);line-height:1.02;letter-spacing:-.05em;font-weight:700;margin:0 0 var(--space-5);color:var(--color-ink)}
 .hm-hero-copy h1 span{color:var(--color-accent)}
 .hm-lead{font-size:var(--text-lg);line-height:1.65;max-width:50ch;margin:0 0 var(--space-6);color:var(--color-ink-muted)}
@@ -96,6 +97,7 @@
 .hm-cta p{font-size:var(--text-lg);margin:0 0 var(--space-6);color:#e6e0ff}
 
 @media (max-width:900px){
+  .hm-hero-copy{transform:none}
   .hm-hero-grid,.hm-faq-wrap{grid-template-columns:minmax(0,1fr)}
   .hm-features{grid-template-columns:repeat(2,minmax(0,1fr))}
   .hm-faq-wrap .hm-h2{margin-bottom:var(--space-5)}
@@ -220,13 +222,21 @@
 /* Homepage hero typography follows Soma's product illustration palette and type system. */
 .hm-hero-support{
   max-width:34ch;
-  margin:0 0 var(--space-6);
+  margin:0 0 10px;
   color:#302942;
   font-family:var(--font-body);
   font-size:clamp(19px,2vw,23px);
   font-weight:700;
   line-height:1.35;
   letter-spacing:-.025em;
+}
+.hm-hero-description{
+  max-width:43ch;
+  margin:0 0 var(--space-6);
+  color:var(--color-ink-muted);
+  font-family:var(--font-body);
+  font-size:clamp(15px,1.25vw,17px);
+  line-height:1.7;
 }
 .hm-hero-copy h1{
   color:#302942;
