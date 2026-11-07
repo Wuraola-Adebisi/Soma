@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Menu, Wallet, X, Instagram, Linkedin, Github, Mail } from 'lucide-react';
+import { ArrowRight, Menu, Wallet, X, Linkedin, Github, Mail } from 'lucide-react';
 import './public-home.css';
 
 type PublicPage = 'home' | 'about' | 'contact' | 'terms' | 'privacy' | 'legal';
