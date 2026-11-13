@@ -71,9 +71,87 @@
         ]
       }
     </script>
+    <style>
+      #root:has(.soma-static-entry) { min-height: 100vh; }
+      .soma-static-entry { box-sizing: border-box; max-width: 1120px; margin: 0 auto; padding: 36px 24px 64px; color: #24212d; font-family: "DM Sans", sans-serif; line-height: 1.65; }
+      .soma-static-entry * { box-sizing: border-box; }
+      .soma-static-entry a { color: #5037c9; }
+      .soma-static-entry header { display: flex; justify-content: space-between; align-items: center; gap: 20px; margin-bottom: 76px; }
+      .soma-static-entry .brand { color: #24212d; font: 800 28px "Manrope", sans-serif; text-decoration: none; }
+      .soma-static-entry nav { display: flex; flex-wrap: wrap; gap: 22px; }
+      .soma-static-entry nav a { font-size: 14px; text-decoration: none; }
+      .soma-static-entry .hero { max-width: 760px; margin-bottom: 72px; }
+      .soma-static-entry h1,.soma-static-entry h2,.soma-static-entry h3 { font-family: "Manrope", sans-serif; line-height: 1.15; }
+      .soma-static-entry h1 { max-width: 720px; margin: 0 0 20px; font-size: clamp(38px, 6vw, 64px); letter-spacing: -.045em; }
+      .soma-static-entry h2 { margin: 0 0 14px; font-size: clamp(25px, 3vw, 34px); }
+      .soma-static-entry h3 { margin: 0 0 10px; font-size: 20px; }
+      .soma-static-entry p { max-width: 760px; }
+      .soma-static-entry .lead { font-size: 19px; color: #625e6b; }
+      .soma-static-entry section { margin: 0 0 54px; }
+      .soma-static-entry .columns { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 28px; }
+      .soma-static-entry article { padding: 26px; border: 1px solid #e7e3ef; border-radius: 18px; }
+      .soma-static-entry .founder { display: flex; align-items: center; gap: 22px; }
+      .soma-static-entry .founder img { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; }
+      .soma-static-entry footer { display: flex; flex-wrap: wrap; gap: 18px; padding-top: 24px; border-top: 1px solid #e7e3ef; font-size: 14px; }
+      @media (max-width: 640px) { .soma-static-entry { padding: 24px 18px 44px; } .soma-static-entry header { align-items: flex-start; flex-direction: column; margin-bottom: 52px; } .soma-static-entry .columns { grid-template-columns: 1fr; } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <main class="soma-static-entry">
+        <header>
+          <a class="brand" href="/" aria-label="Soma home">soma.</a>
+          <nav aria-label="Main navigation">
+            <a href="/#how-it-works">How it works</a>
+            <a href="/about">About Soma</a>
+            <a href="/contact">Contact</a>
+            <a href="/app">Open Soma</a>
+          </nav>
+        </header>
+        <section class="hero">
+          <h1>Money is easier to manage when everything has its place.</h1>
+          <p class="lead">Soma is a digital money-planning product that brings personal money management and shared-expense tracking together. Organise income, everyday spending, budgets, bills and savings goals, while keeping a clear record of costs you share with a household, partner, flatmates or a group.</p>
+          <p><a href="/app">Explore Soma</a></p>
+        </section>
+        <section id="how-it-works">
+          <h2>Two sides of everyday money</h2>
+          <div class="columns">
+            <article>
+              <h3>Personal money planning</h3>
+              <p>Record income and spending, organise expenses into categories, set monthly budgets, track bill due dates and payment status, and monitor savings goals. Review summaries and export reports for your records.</p>
+            </article>
+            <article>
+              <h3>Shared-expense tracking</h3>
+              <p>Create separate spaces for a household, couple, trip or group. Record who paid, split expenses between selected people, review member balances and suggested settlements, and keep a settlement history.</p>
+            </article>
+          </div>
+        </section>
+        <section>
+          <h2>A working early-stage product</h2>
+          <p>Soma is independently developed by its founder. The current version stores personal and shared records in the browser being used; it does not currently provide account-based access, cross-device synchronisation, bank connections or payment processing. Shared spaces help one person organise group expenses; other members do not yet access the same space from their own devices. These are current product boundaries, not claims about future functionality.</p>
+          <p>Soma is a money-planning tool, not a bank or financial adviser. Figures and balances depend on information entered by the user.</p>
+        </section>
+        <section>
+          <h2>About the founder</h2>
+          <div class="founder">
+            <img src="/Wuraola%27s%20Image.jpg" alt="Wuraola Eunice Adebisi" />
+            <div>
+              <h3>Wuraola Eunice Adebisi</h3>
+              <p>Founder and Product Developer. Wuraola is independently building Soma, with a focus on making personal money planning and shared expenses simpler to keep up with.</p>
+              <p><a href="https://www.linkedin.com/in/wuraola-adebisi/">LinkedIn</a> · <a href="mailto:hello@trackwithsoma.com">hello@trackwithsoma.com</a></p>
+            </div>
+          </div>
+        </section>
+        <footer>
+          <a href="/about">About</a>
+          <a href="/contact">Contact</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/legal">Legal information</a>
+          <span>© Soma. A money-planning tool, not a bank or financial adviser.</span>
+        </footer>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
