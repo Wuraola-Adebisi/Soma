@@ -87,8 +87,9 @@ No NVIDIA technology is currently integrated. This roadmap does not commit Soma 
 - [ ] Define success measures; do not invent adoption, revenue, retention or model-performance metrics.
 
 ### Engineering
-- [ ] Run a clean dependency install, TypeScript check and production build from current main.
-- [ ] Add automated tests for financial arithmetic, date boundaries, currency precision, recurring schedules and scenario calculations.
+- [x] Extract the shared-money balance calculation into a pure, testable module and correct settlement direction.
+- [x] Add automated unit tests for initial balances, partial/full settlements, reverse-direction settlements and cent precision.
+- [ ] Run a clean dependency install, full TypeScript check and production build.
 - [ ] Review browser-storage failure handling, exports and data-loss risks.
 - [ ] Resolve the account and collaboration architecture before cloud persistence.
 - [ ] Document data models, trust boundaries, threat model and privacy controls for future AI workloads.
@@ -96,8 +97,7 @@ No NVIDIA technology is currently integrated. This roadmap does not commit Soma 
 - [ ] Reconcile or close stale stacked pull requests only after comparing them with current main and validating the result.
 
 ### Application
-- [ ] Confirm the legal entity that will apply and that it owns or operates Soma.
-- [ ] Confirm official incorporation and collect verifiable registration details.
+- [x] Legal applicant confirmed: Soma is the incorporated entity submitting the application.
 - [ ] Confirm the founder/developer arrangement against NVIDIA's employed-developer eligibility wording; do not assume founder status automatically satisfies it.
 - [ ] Ensure the website, contact email, repository and deck tell the same factual story.
 - [ ] Prepare a deck covering problem, product, target users, market, differentiation, current stage, AI opportunity, technical roadmap, team, business-model hypotheses and the specific support sought from Inception.
@@ -114,11 +114,10 @@ This is a working draft. Update it after user validation, technical testing and 
 
 ## 7. Open decisions
 
-1. **Legal applicant:** Which incorporated entity owns or operates Track by Soma and will submit the application?
-2. **Initial user segment:** Which group has the most acute cash-flow planning problem Soma can credibly serve first?
-3. **Data architecture:** What secure account and persistence architecture is appropriate before financial records leave the browser?
-4. **AI workload:** Which specific task demonstrates measurable improvement over a deterministic baseline?
-5. **Business model:** Which revenue model should be tested, and what evidence supports it?
+1. **Initial user segment:** Which group has the most acute cash-flow planning problem Soma can credibly serve first?
+2. **Data architecture:** What secure account and persistence architecture is appropriate before financial records leave the browser?
+3. **AI workload:** Which specific task demonstrates measurable improvement over a deterministic baseline?
+4. **Business model:** Which revenue model should be tested, and what evidence supports it?
 
 ## 8. Sources
 
