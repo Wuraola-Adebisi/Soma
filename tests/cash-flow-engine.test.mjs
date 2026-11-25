@@ -98,3 +98,30 @@ test('irregular income is not projected without dated income records', () => {
   const result = projectCashFlow({ ...base, incomeSchedule: { amount: 1000, frequency: 'Irregular', nextPayday: '2026-12-01' } });
   assert.equal(result.totalIncome, 0);
 });
+
+test('overdue unpaid bills are included on the projection start date', () => {
+  const result = projectCashFlow({
+    asOfDate: '2026-11-25', openingBalance: 500, horizonDays: 10,
+    bills: [{ title: 'Power', amount: 100, dueDate: '2026-11-20', paid: false }],
+  });
+  assert.equal(result.timeline[0].outflows, 100);
+  assert.equal(result.endingBalance, 400);
+});
+
+test('recurring unpaid bills project future monthly occurrences', () => {
+  const result = projectCashFlow({
+    asOfDate: '2026-11-25', openingBalance: 1000, horizonDays: 70,
+    bills: [{ title: 'Internet', amount: 50, dueDate: '2026-11-30', paid: false, recurring: true }],
+  });
+  assert.equal(result.totalOutflows, 150);
+  assert.deepEqual(result.timeline.filter(day => day.outflows > 0).map(day => day.date), ['2026-11-30', '2026-12-30', '2027-01-30']);
+});
+
+test('an already recorded payment prevents an overdue bill from being counted again', () => {
+  const result = projectCashFlow({
+    asOfDate: '2026-11-25', openingBalance: 500, horizonDays: 10,
+    transactions: [{ title: 'Power', amount: 100, date: '2026-11-24', type: 'expense' }],
+    bills: [{ title: 'Power', amount: 100, dueDate: '2026-11-20', paid: false }],
+  });
+  assert.equal(result.totalOutflows, 0);
+});

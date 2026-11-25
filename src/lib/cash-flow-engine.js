@@ -20,6 +20,15 @@ function fromDate(time) {
   return new Date(time).toISOString().slice(0, 10);
 }
 
+function addMonth(date) {
+  const source = new Date(parseDate(date, 'recurring date'));
+  const year = source.getUTCFullYear();
+  const month = source.getUTCMonth() + 1;
+  const day = source.getUTCDate();
+  const lastDay = new Date(Date.UTC(year, month + 1, 0)).getUTCDate();
+  return fromDate(Date.UTC(year, month, Math.min(day, lastDay)));
+}
+
 function addMonthlyFromAnchor(anchor, occurrence) {
   const source = new Date(parseDate(anchor, 'incomeSchedule.nextPayday'));
   const monthIndex = source.getUTCFullYear() * 12 + source.getUTCMonth() + occurrence;
@@ -87,14 +96,40 @@ export function projectCashFlow(input) {
     addEvent(tx.date, tx.amount, tx.type === 'income' ? 'in' : 'out', 'recorded-transaction', tx.title);
   }
 
+  const recordedTransactions = input.transactions || [];
+  const existingBillDates = new Set((input.bills || []).map((bill) => normalizeTitle(bill.title) + '|' + bill.dueDate));
+  const billTransactionExists = (bill, date, overdue = false) => recordedTransactions.some((tx) =>
+    tx.type === 'expense' &&
+    (tx.date === date || (overdue && tx.date >= bill.dueDate && tx.date <= input.asOfDate)) &&
+    Math.round(tx.amount * 100) === Math.round(bill.amount * 100) &&
+    normalizeTitle(tx.title) === normalizeTitle(bill.title)
+  );
+
   for (const bill of input.bills || []) {
     if (bill.paid) continue;
-    const duplicate = (input.transactions || []).some((tx) =>
-      tx.type === 'expense' && tx.date === bill.dueDate &&
-      Math.round(tx.amount * 100) === Math.round(bill.amount * 100) &&
-      normalizeTitle(tx.title) === normalizeTitle(bill.title)
-    );
-    if (!duplicate) addEvent(bill.dueDate, bill.amount, 'out', 'unpaid-bill', bill.title);
+    const dueTime = parseDate(bill.dueDate, 'bill.dueDate');
+    const overdue = dueTime < start;
+    const firstDate = overdue ? input.asOfDate : bill.dueDate;
+    if (!billTransactionExists(bill, firstDate, overdue)) {
+      addEvent(firstDate, bill.amount, 'out', 'unpaid-bill', overdue ? bill.title + ' (overdue)' : bill.title);
+    }
+
+    if (bill.recurring) {
+      let nextDate = addMonth(bill.dueDate);
+      for (let guard = 0; guard < 600; guard += 1) {
+        const nextTime = parseDate(nextDate, 'recurring bill date');
+        if (nextTime < start) {
+          nextDate = addMonth(nextDate);
+          continue;
+        }
+        if (nextTime > end) break;
+        const key = normalizeTitle(bill.title) + '|' + nextDate;
+        if (!existingBillDates.has(key) && !billTransactionExists(bill, nextDate)) {
+          addEvent(nextDate, bill.amount, 'out', 'unpaid-bill', bill.title + ' (recurring)');
+        }
+        nextDate = addMonth(nextDate);
+      }
+    }
   }
 
   const explicitIncomeDates = new Set((input.transactions || [])
