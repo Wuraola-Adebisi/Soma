@@ -36,7 +36,7 @@ Questions the product could help users explore:
 
 The initial hypothesis is a cash-flow planning and decision-support layer built from records the user chooses to enter into Soma. It should show inputs, calculations, assumptions and uncertainty. It must not present estimates as guaranteed outcomes or personalised investment, lending or regulated financial advice.
 
-This is a proposed direction to validate with users, not an implemented feature or a proven market need.
+The deterministic projection and one-change scenario comparison now exist in the working branch. Statistical or machine-learning enhancements remain proposed and require user validation; they are not implemented.
 
 ## 3. Proposed capability sequence
 
