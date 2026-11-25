@@ -26,6 +26,7 @@ export default function CashFlowOutlook(props: Props) {
   const [scenarioDirection, setScenarioDirection] = useState<'in' | 'out'>('out');
   const [scenarioLabel, setScenarioLabel] = useState('');
   const [scenario, setScenario] = useState<CashFlowAdjustment | null>(null);
+  const [editingBalance, setEditingBalance] = useState(false);
   const fresh = props.cashBalance !== undefined && props.cashBalanceDate === today;
   const input = useMemo<CashFlowProjectionInput | null>(() => fresh ? ({
     asOfDate: today, openingBalance: props.cashBalance!, horizonDays: days,
@@ -38,7 +39,7 @@ export default function CashFlowOutlook(props: Props) {
   const save = (e: FormEvent) => {
     e.preventDefault(); const n = Number(draft);
     if (!draft.trim() || !Number.isFinite(n)) { setError('Enter a valid balance. Use a minus sign if the account is overdrawn.'); return; }
-    props.onSaveBalance(Math.round((n + Number.EPSILON) * 100) / 100, today); setError('');
+    props.onSaveBalance(Math.round((n + Number.EPSILON) * 100) / 100, today); setError(''); setEditingBalance(false);
   };
   const addScenario = (e: FormEvent) => {
     e.preventDefault(); const n = Number(scenarioAmount);
@@ -50,9 +51,9 @@ export default function CashFlowOutlook(props: Props) {
   return <section className="cash-outlook" aria-labelledby="cash-outlook-title">
     <header className="cash-outlook-head">
       <div><span className="cash-outlook-eyebrow"><Wallet size={14}/> Planning tool</span><h2 id="cash-outlook-title">Cash flow outlook</h2><p>See how your plans and upcoming commitments could affect your balance.</p></div>
-      {baseline && <div className="cash-outlook-horizons" aria-label="Projection period">{([30,60,90] as const).map(n => <button type="button" key={n} className={days===n?'active':''} onClick={()=>setDays(n)}>{n} days</button>)}</div>}
+      {baseline && <div className="cash-outlook-head-actions"><button type="button" className="cash-outlook-update" onClick={()=>{setDraft(String(props.cashBalance ?? ''));setEditingBalance(true);}}>Update balance</button><div className="cash-outlook-horizons" aria-label="Projection period">{([30,60,90] as const).map(n => <button type="button" key={n} className={days===n?'active':''} onClick={()=>setDays(n)}>{n} days</button>)}</div></div>}
     </header>
-    {!fresh ? <div className="cash-outlook-start">
+    {(!fresh || editingBalance) ? <div className="cash-outlook-start">
       {props.cashBalance !== undefined && <div className="cash-outlook-stale" role="status"><AlertTriangle size={17}/> Your saved balance is from {props.cashBalanceDate || 'an earlier date'}. Update it to project from today.</div>}
       <div className="cash-outlook-start-copy"><div className="cash-outlook-wallet"><Wallet size={20}/></div><div><h3>Start with your current balance</h3><p>Enter the amount currently available in the account or cash you want to plan. This is a manual starting figure, not a bank connection.</p></div></div>
       <form className="cash-outlook-balance-form" onSubmit={save}><label htmlFor="cash-current-balance">Current balance ({props.currency})</label><input id="cash-current-balance" inputMode="decimal" value={draft} onChange={e=>setDraft(e.target.value)} placeholder="e.g. 250000 or -12000"/><p>You can enter a negative amount if you are overdrawn. Update it when your real balance changes.</p>{error&&<p className="cash-outlook-error" role="alert">{error}</p>}<button className="primary" type="submit">Save current balance</button></form>
