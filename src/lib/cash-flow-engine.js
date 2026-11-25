@@ -1,7 +1,7 @@
 const DAY_MS = 86_400_000;
 
-function toCents(value, field) {
-  if (!Number.isFinite(value) || value < 0) throw new RangeError(`${field} must be a finite, non-negative amount.`);
+function toCents(value, field, allowNegative = false) {
+  if (!Number.isFinite(value) || (!allowNegative && value < 0)) throw new RangeError(`${field} must be a finite, ${allowNegative ? '' : 'non-negative '}amount.`);
   return Math.round((value + Number.EPSILON) * 100);
 }
 
@@ -30,9 +30,11 @@ function addMonthlyFromAnchor(anchor, occurrence) {
 }
 
 function recurringPaydays(schedule, start, end) {
-  if (!schedule || schedule.frequency === 'Irregular' || schedule.amount <= 0) return [];
-  const anchor = parseDate(schedule.nextPayday, 'incomeSchedule.nextPayday');
+  if (!schedule) return [];
+  if (!['Weekly', 'Biweekly', 'Monthly', 'Irregular'].includes(schedule.frequency)) throw new TypeError('Unsupported income frequency.');
   const amount = toCents(schedule.amount, 'incomeSchedule.amount');
+  if (schedule.frequency === 'Irregular' || amount === 0) return [];
+  const anchor = parseDate(schedule.nextPayday, 'incomeSchedule.nextPayday');
   const dates = [];
   if (schedule.frequency === 'Weekly' || schedule.frequency === 'Biweekly') {
     const interval = (schedule.frequency === 'Weekly' ? 7 : 14) * DAY_MS;
@@ -68,7 +70,7 @@ function normalizeTitle(value) {
 export function projectCashFlow(input) {
   if (!input || typeof input !== 'object') throw new TypeError('A projection input is required.');
   const start = parseDate(input.asOfDate, 'asOfDate');
-  const opening = toCents(input.openingBalance, 'openingBalance');
+  const opening = toCents(input.openingBalance, 'openingBalance', true);
   if (!Number.isInteger(input.horizonDays) || input.horizonDays < 1 || input.horizonDays > 366) {
     throw new RangeError('horizonDays must be an integer from 1 to 366.');
   }
