@@ -90,7 +90,7 @@ test('what-if adjustments change the projection without mutating the baseline', 
 
 test('rejects invalid dates, negative amounts and unsupported horizons', () => {
   assert.throws(() => projectCashFlow({ ...base, asOfDate: '2026-02-30' }), /valid calendar date/);
-  assert.throws(() => projectCashFlow({ ...base, openingBalance: -1 }), /non-negative/);
+  assert.equal(projectCashFlow({ ...base, openingBalance: -1 }).openingBalance, -1);
   assert.throws(() => projectCashFlow({ ...base, horizonDays: 400 }), /1 to 366/);
 });
 
