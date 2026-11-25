@@ -29,6 +29,14 @@ Soma is a working MVP. Personal and shared records are kept in the browser being
 
 The roadmap includes individual access to shared spaces and a consistent experience across devices. These are planned improvements, not current features.
 
+## Cash-flow outlook
+
+The Goals & insights workspace includes a deterministic cash-flow outlook. Enter a current balance to project daily balances over 30, 60 or 90 days using the saved payday schedule, dated future transactions and unpaid bills. The projection flags the first date on which the estimated balance falls below zero. Monthly recurring bills are projected from the recurring bill records, and overdue unpaid bills are included from the projection start date.
+
+The what-if tool lets a person add one hypothetical dated inflow or outflow and compare the resulting projection without changing the saved ledger. The current balance is entered manually and saved with the date it was supplied; it must be refreshed to produce a projection from a later date.
+
+These are estimates based on information entered into Soma. The outlook does not connect to bank accounts, verify a balance, guarantee income or payment dates, or provide financial advice. The current calculation does not yet include unscheduled savings contributions, budget allocations or shared-space balances. Records remain in browser storage.
+
 ## Business and product direction
 
 Soma is being developed as a digital software product for people who want a clearer way to organise personal finances and shared household costs. Its revenue model is still being evaluated; no pricing or paid plan is currently being presented as available.
@@ -47,7 +55,7 @@ npm run build
 npm run preview
 ```
 
-Run `npm test` to execute the shared-money calculation tests. Run `npm run build` to type-check and create the production build.Open `/app` for the planner. `/app#shared` opens Shared money directly.
+Run `npm test` to execute the shared-money and cash-flow calculation tests. Run `npm run build` to type-check and create the production build. Open `/app` for the planner. `/app#shared` opens Shared money directly.
 
 ## Website
 

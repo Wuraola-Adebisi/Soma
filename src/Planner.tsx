@@ -33,6 +33,7 @@ import {
   Users,
 } from 'lucide-react';
 import SharedMoney from './SharedMoneyLocal';
+import CashFlowOutlook from './CashFlowOutlook';
 import { openStyledExport } from './styledExport';
 import './app-ui.css';
 
@@ -64,6 +65,8 @@ type Plan = {
   frequency: Frequency;
   nextPayday: string;
   currency: string;
+  cashBalance?: number;
+  cashBalanceDate?: string;
   allocations: Record<string, number>;
   setupDone?: boolean;
 };
@@ -720,7 +723,7 @@ function Dashboard() {
     'Salary planner': { title: 'Salary plan', desc: 'Decide where each payday goes.' },
     Expenses: { title: 'Expenses', desc: 'Everything that came in and went out.' },
     'Bills & calendar': { title: 'Bills and calendar', desc: 'What is due, and what you have paid.' },
-    'Goals & insights': { title: 'Goals', desc: 'What you are saving toward.' },
+    'Goals & insights': { title: 'Goals', desc: 'Track what you are saving toward and see how your plans affect future cash flow.' },
     'Shared money': { title: 'Shared money', desc: 'Split costs with the people you share them with.' },
   };
   return (
@@ -1272,7 +1275,20 @@ function Dashboard() {
             />
           )}
           {page === 'Goals & insights' && (
-            <Goals data={data} fmt={fmt} open={open} remove={remove} update={setData} />
+            <>
+              <CashFlowOutlook
+                currency={data.plan.currency}
+                income={data.plan.income}
+                frequency={data.plan.frequency}
+                nextPayday={data.plan.nextPayday}
+                transactions={data.transactions}
+                bills={data.bills}
+                cashBalance={data.plan.cashBalance}
+                cashBalanceDate={data.plan.cashBalanceDate}
+                onSaveBalance={(cashBalance, cashBalanceDate) => updatePlan({ cashBalance, cashBalanceDate })}
+              />
+              <Goals data={data} fmt={fmt} open={open} remove={remove} update={setData} />
+            </>
           )}
           <footer className="app-footer">
             <div className="app-footer-top">
