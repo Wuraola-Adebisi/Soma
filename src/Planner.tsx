@@ -723,7 +723,7 @@ function Dashboard() {
     'Salary planner': { title: 'Salary plan', desc: 'Decide where each payday goes.' },
     Expenses: { title: 'Expenses', desc: 'Everything that came in and went out.' },
     'Bills & calendar': { title: 'Bills and calendar', desc: 'What is due, and what you have paid.' },
-    'Goals & insights': { title: 'Goals', desc: 'What you are saving toward.' },
+    'Goals & insights': { title: 'Goals', desc: 'Track what you are saving toward and see how your plans affect future cash flow.' },
     'Shared money': { title: 'Shared money', desc: 'Split costs with the people you share them with.' },
   };
   return (
