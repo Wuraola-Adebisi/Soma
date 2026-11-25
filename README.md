@@ -42,11 +42,12 @@ Soma generates report layouts for supported personal planner pages and the share
 ```
 npm install
 npm run dev
+npm test
 npm run build
 npm run preview
 ```
 
-Open `/app` for the planner. `/app#shared` opens Shared money directly.
+Run `npm test` to execute the shared-money calculation tests. Run `npm run build` to type-check and create the production build.Open `/app` for the planner. `/app#shared` opens Shared money directly.
 
 ## Website
 
