@@ -125,3 +125,11 @@ test('an already recorded payment prevents an overdue bill from being counted ag
   });
   assert.equal(result.totalOutflows, 0);
 });
+
+test('an already negative starting balance is reported from the projection date', () => {
+  const result = projectCashFlow({
+    asOfDate: '2026-11-25', openingBalance: -20, horizonDays: 3,
+  });
+  assert.equal(result.firstShortfallDate, '2026-11-25');
+  assert.equal(result.lowestBalance, -20);
+});

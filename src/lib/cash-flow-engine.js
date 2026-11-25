@@ -160,7 +160,7 @@ export function projectCashFlow(input) {
   let totalIncome = 0;
   let totalOutflows = 0;
   let lowestBalance = opening;
-  let firstShortfallDate = null;
+  let firstShortfallDate = opening < 0 ? input.asOfDate : null;
   let daysBelowZero = 0;
   const timeline = [];
 
