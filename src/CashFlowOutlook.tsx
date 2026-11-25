@@ -6,7 +6,7 @@ import type { CashFlowAdjustment, CashFlowProjectionInput } from './lib/cash-flo
 import './cash-flow-outlook.css';
 
 type Transaction = { id: string; title: string; amount: number; date: string; type: 'income' | 'expense' };
-type Bill = { id: string; title: string; amount: number; dueDate: string; paid: boolean };
+type Bill = { id: string; title: string; amount: number; dueDate: string; paid: boolean; recurring: boolean };
 type Props = {
   currency: string; income: number; frequency: 'Monthly' | 'Weekly' | 'Biweekly' | 'Irregular';
   nextPayday: string; transactions: Transaction[]; bills: Bill[];
